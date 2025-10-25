@@ -53,11 +53,11 @@ class Account extends ActiveRecord {
         return $inserted_id;
     }
 
-    public static function setUserData($user_id, $terms_accepted){
+    public static function setUserData($user_id){
         $user_token = bin2hex(random_bytes(32));
-        $query = "INSERT INTO users_data (user_id, user_token, terms_accepted) VALUES (?, ?, ?)";
-        $params = [$user_id, $user_token, $terms_accepted];
-        $types = "isi";
+        $query = "INSERT INTO users_data (user_id, user_token) VALUES (?, ?)";
+        $params = [$user_id, $user_token];
+        $types = "is";
 
         $stmt = self::$db->prepare($query); 
         if (!$stmt) { throw new Exception("An unexpected error occurred. Please try again later.", 1);}
@@ -70,9 +70,9 @@ class Account extends ActiveRecord {
 
     public static function setCompleteUserData($user_id, $data_array){
         $user_token = bin2hex(random_bytes(32));
-        $query = "INSERT INTO users_data (user_id, user_token, google_id, profile_picture, terms_accepted) VALUES (?, ?, ?, ?, ?)";
-        $params = [$user_id, $user_token, $data_array["google_id"] ?? "", $data_array["profile_picture"] ?? "", $data_array["terms"]];
-        $types = "isssi";
+        $query = "INSERT INTO users_data (user_id, user_token, google_id, profile_picture) VALUES (?, ?, ?, ?)";
+        $params = [$user_id, $user_token, $data_array["google_id"] ?? "", $data_array["profile_picture"] ?? ""];
+        $types = "isss";
 
         $stmt = self::$db->prepare($query); 
         if (!$stmt) { throw new Exception("An unexpected error occurred. Please try again later.", 1);}
