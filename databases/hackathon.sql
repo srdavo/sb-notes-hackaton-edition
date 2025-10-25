@@ -18,9 +18,9 @@ CREATE TABLE `notes` (
   `note_content` TEXT DEFAULT NULL,
   `row_status` TINYINT(1) DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_general_ci;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 -- Table: movements
@@ -34,9 +34,9 @@ CREATE TABLE `movements` (
   `update_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `row_status` TINYINT(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 -- Table: feelings
@@ -46,37 +46,8 @@ CREATE TABLE `feelings` (
   `user_id` BIGINT DEFAULT NULL,
   `note_id` INT DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
--- Optional: Foreign Key Constraints
--- Uncomment if the `users` table exists
--- --------------------------------------------------------
--- ALTER TABLE `notes`
---   ADD CONSTRAINT `fk_notes_user`
---   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
---   ON DELETE CASCADE;
-
--- ALTER TABLE `movements`
---   ADD CONSTRAINT `fk_movements_user`
---   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
---   ON DELETE SET NULL;
-
--- ALTER TABLE `movements`
---   ADD CONSTRAINT `fk_movements_note`
---   FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`)
---   ON DELETE CASCADE;
-
--- ALTER TABLE `feelings`
---   ADD CONSTRAINT `fk_feelings_user`
---   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
---   ON DELETE SET NULL;
-
--- ALTER TABLE `feelings`
---   ADD CONSTRAINT `fk_feelings_note`
---   FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`)
---   ON DELETE CASCADE;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_general_ci;
 
 COMMIT;
