@@ -12,8 +12,9 @@ $data = json_decode($json_data, true);
 switch ($data["op"]){
     case "feeling_save":
 
+        // If an id is provided, we'll treat this as an update. Otherwise a create.
         $data_array = [
-            "id" => null,
+            "id" => isset($data["id"]) && is_numeric($data["id"]) ? intval($data["id"]) : null,
             "user_id" => isset($data["user_id"]) ? intval($data["user_id"]) : $userid,
             "note_id" => isset($data["note_id"]) ? intval($data["note_id"]) : null
         ];
@@ -25,8 +26,22 @@ switch ($data["op"]){
             $Feeling = new Feeling($data_array);
             $result = $Feeling->save();
 
-            if (!$result) {
-                throw new Exception('Failed to save note');
+            // Normalize result: create returns array with 'ok' and 'id', update returns boolean
+            $savedOk = false;
+            $savedId = null;
+
+            if (is_array($result)) {
+                $savedOk = !empty($result['ok']);
+                $savedId = $result['id'] ?? null;
+            } else {
+                // boolean result from update
+                $savedOk = ($result === true || $result === 1);
+                // if updating, prefer provided id
+                $savedId = $data_array['id'] ?? null;
+            }
+
+            if (!$savedOk) {
+                throw new Exception('Failed to save feeling');
             }
 
             // Commit de la transacción
@@ -34,8 +49,8 @@ switch ($data["op"]){
 
             $response = [
                 "success" => true,
-                "message" => "Feeling created successfully",
-                "note_id" => $Feeling->id
+                "message" => isset($data_array["id"]) && $data_array["id"] ? "Feeling updated successfully" : "Feeling created successfully",
+                "note_id" => $savedId ?? $Feeling->id
             ];
 
         } catch (Exception $e) {
