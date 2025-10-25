@@ -11,7 +11,8 @@ session_set_cookie_params([
     'lifetime' => 86400,
     'domain' => $_ENV["domain"],
     'path' => '/',
-    'secure' => true,
+    // enable Secure flag only when using HTTPS to avoid losing cookies on local HTTP dev
+    'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
     'httponly' => true,
 ]);
 

@@ -12,7 +12,8 @@ function validatePage(){
         if (!in_array($currentPage, $allowedPages)) {
 
             if(isset($_COOKIE["codemelon-remember_me"])){
-                header ("location: login");
+                // usar ruta absoluta para evitar redirecciones relativas en subdirectorios
+                header ("Location: /login.php");
                 exit();
             }
 
@@ -22,8 +23,9 @@ function validatePage(){
             //     exit();
             // }
             if(!isset($_SESSION["id"])){
-                // echo "Current Page: ".$_SERVER['REQUEST_URI'];
-                header ("location: index?redirect");        
+                // usar ruta absoluta para evitar redirecciones relativas en subdirectorios
+                // y apuntar al archivo real index.php
+                header ("Location: /index.php?redirect");        
                 exit();
             }
             
@@ -33,7 +35,8 @@ function validatePage(){
         // session activa sí
         $currentPage = basename($_SERVER['PHP_SELF']);
         if($currentPage == 'login.php'){
-            header ("location: home");
+            // redirigir a la página principal usando ruta absoluta
+            header ("Location: /home.php");
             exit();
         }
 
