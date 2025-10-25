@@ -1,0 +1,20 @@
+{
+  "display": "standalone",
+  "name": "hackaton notes",
+  "short_name": "hackaton notes",
+  "description": "La mejor app para tomar gestionar tus finanzas",
+  "start_url": "../../home",
+  "scope": ".",
+  "icons": [
+  {
+    "src": "../../assets/icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  },
+  {
+    "src": "../../assets/icon.png",
+    "type": "image/png",
+    "sizes": "512x512"
+  }
+  ]
+}

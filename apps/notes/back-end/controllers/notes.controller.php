@@ -2,8 +2,6 @@
 require_once("../config/connect.php");
 require_once("../models/Note.php");
 require_once("../../../../config/session.php");
-require_once("../models/Permissions.php");
-require_once("../models/ActionLog.php");
 require_once("../helpers/Pagination.php");
 
 
