@@ -1,8 +1,8 @@
-<?php 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/back-end/config/config.php';
-include_once $_SERVER['DOCUMENT_ROOT'] . BASE_URL ."back-end/config/session.php";
+<?php
+include_once __DIR__ . '/../../back-end/config/config.php';
+include_once __DIR__ . '/../../back-end/config/session.php';
 
-include $_SERVER['DOCUMENT_ROOT'] . BASE_URL .'back-end/config/allowed_pages.php';
+include __DIR__ . '/../../back-end/config/allowed_pages.php';
 ?>
 
 <!DOCTYPE html>
