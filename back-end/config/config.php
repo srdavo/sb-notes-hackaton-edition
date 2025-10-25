@@ -1,46 +1,57 @@
 <?php
-// $env_path = dirname(__DIR__) . '/../../.env';
-$env_path = dirname(__DIR__) . '/../../sb.env'; // Production
+// No longer uses .env — all values are defined directly here.
 
 define('ROOT_PATH', dirname(__DIR__, 4));
 
+// =====================
+// DATABASES
+// =====================
+$_ENV['db_host']              = 'localhost';
+$_ENV['db_user']              = 'root';
+$_ENV['db_password']          = 'sdqxeacwz';
+$_ENV['db_name']              = 'cocounut_sb';
 
-if (file_exists($env_path)) {
-    $env_vars = parse_ini_file($env_path);
-    if ($env_vars === false) {
-        die("Failed to parse .env file. Check file format."); // Handle parsing errors
-    }
+$_ENV['db_user_mind']         = 'root';
+$_ENV['db_password_mind']     = 'sdqxeacwz';
+$_ENV['db_name_mind']         = 'sb_mind';
 
-    // Access environment variables from the $env_vars array
-    $_ENV['db_host'] = $env_vars['DB_HOST'] ?? 'localhost'; // Default to 'localhost' if not found
-    $_ENV['db_user'] = $env_vars['DB_USER_MAIN'] ?? '';
-    $_ENV['db_password'] = $env_vars['DB_PASSWORD_MAIN'] ?? '';
-    $_ENV['db_name'] = $env_vars['DB_NAME_MAIN'] ?? '';
-    $_ENV['google_client_id'] = $env_vars['GOOGLE_CLIENT_ID'] ?? '';
-    $_ENV['google_client_secret'] = $env_vars['GOOGLE_CLIENT_SECRET'] ?? '';
-    $_ENV['domain'] = $env_vars['DOMAIN'] ?? '';
-    $_ENV['db_user_mind'] = $env_vars['DB_USER_MIND'] ?? '';
-    $_ENV['db_password_mind'] = $env_vars['DB_PASSWORD_MIND'] ?? '';
-    $_ENV['db_name_mind'] = $env_vars['DB_NAME_MIND'] ?? '';
-    $_ENV['STRIPE_SECRET_KEY'] = $env_vars['STRIPE_SECRET_KEY'] ?? '';
-    $_ENV['STRIPE_PUBLIC_KEY'] = $env_vars['STRIPE_PUBLIC_KEY'] ?? '';
-    $_ENV['STRIPE_WEBHOOK_SECRET'] = $env_vars['STRIPE_WEBHOOK_SECRET'] ?? '';
-    $_ENV['STRIPE_PRODUCT_ID'] = $env_vars['STRIPE_PRODUCT_ID'] ?? '';
-    $_ENV['encryption_password'] = $env_vars['ENCRYPTION_PASSWORD'] ?? '';
-    $_ENV['email_password'] = $env_vars['EMAIL_PASSWORD'] ?? '';
-    $_ENV["verifactu_service_key"] = $env_vars['VERIFACTU_SERVICE_KEY'] ?? '';
-    $_ENV["whatsapp_api_key"] = $env_vars['WHATSAPP_API_KEY'] ?? '';
+$_ENV['db_user_calories']     = 'root';
+$_ENV['db_password_calories'] = 'sdqxeacwz';
+$_ENV['db_name_calories']     = 'sb_calories';
 
-} else {
-    die(".env file not found at: " . $env_path . ". Please create it outside the web root."); // Handle missing .env file
-}
+$_ENV["db_user_hackaton"]     = "root";
+$_ENV["db_password_hackaton"] = "sdqxeacwz";
+$_ENV['db_name_hackaton']     = 'hackaton';
 
-$_ENV["APP_NAME"] = "Codemelon";
+// =====================
+// GOOGLE OAUTH
+// =====================
 
+// =====================
+// DOMAIN
+// =====================
+$_ENV['domain']               = 'localhost';
 
-// backend variables
-$_ENV["SESSION_NAME"] = "codemelon-session";
+// =====================
+// STRIPE KEYS
+// =====================
 
+// =====================
+// ENCRYPTION / EMAIL
+// =====================
+$_ENV['encryption_password']  = 'ghrbyfntv';
 
-// Time zone
-date_default_timezone_set('UTC');// Set the default timezone
+// =====================
+// EXTERNAL SERVICES
+// =====================
+
+// =====================
+// APP CONFIG
+// =====================
+$_ENV['APP_NAME']             = 'stepbro';
+$_ENV['SESSION_NAME']         = 'stepbro-session';
+
+// =====================
+// TIMEZONE
+// =====================
+date_default_timezone_set('America/Monterrey');
