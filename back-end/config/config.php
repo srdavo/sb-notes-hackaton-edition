@@ -1,6 +1,4 @@
 <?php
-// No longer uses .env — all values are defined directly here.
-
 define('ROOT_PATH', dirname(__DIR__, 4));
 define('BASE_URL', '/');
 
