@@ -10,7 +10,7 @@ class Note extends ActiveRecord {
     ];
 
     public $id;
-    public $note_id;
+    public $user_id;
     public $note_name;
 
     public function __construct($args = []) {

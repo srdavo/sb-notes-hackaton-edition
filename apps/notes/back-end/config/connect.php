@@ -8,5 +8,7 @@ if (!$db) {
     echo "error de depuración: " . mysqli_connect_error();
     echo "error de depuración: " . mysqli_connect_error();
     exit;
+} else {
+    // echo "Conexión exitosa a la base de datos.";
 }
 ActiveRecord::setDB($db);
