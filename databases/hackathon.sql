@@ -1,27 +1,82 @@
 -- --------------------------------------------------------
--- Database: `hackathon`
+-- Database: hackathon
 -- --------------------------------------------------------
 
--- --------------------------------------------------------
--- Table structure for table `notes`
--- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `hackathon`
+  DEFAULT CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
 
+USE `hackathon`;
+
+-- --------------------------------------------------------
+-- Table: notes
+-- --------------------------------------------------------
 CREATE TABLE `notes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
-  `note_name` varchar(255) DEFAULT NULL,
-  `note_content` text DEFAULT NULL,
-  `row_status` tinyint(1) DEFAULT 1,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT(20) NOT NULL,
+  `note_name` VARCHAR(255) DEFAULT NULL,
+  `note_content` TEXT DEFAULT NULL,
+  `row_status` TINYINT(1) DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci;
 
 -- --------------------------------------------------------
--- Optional: Foreign Key Constraint
--- Uncomment if `users` table exists
+-- Table: movements
+-- --------------------------------------------------------
+CREATE TABLE `movements` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT DEFAULT NULL,
+  `note_id` INT DEFAULT NULL,
+  `quantity` BIGINT DEFAULT NULL,
+  `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `row_status` TINYINT(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Table: feelings
+-- --------------------------------------------------------
+CREATE TABLE `feelings` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT DEFAULT NULL,
+  `note_id` INT DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+-- Optional: Foreign Key Constraints
+-- Uncomment if the `users` table exists
 -- --------------------------------------------------------
 -- ALTER TABLE `notes`
---   ADD CONSTRAINT `notes_ibfk_1`
+--   ADD CONSTRAINT `fk_notes_user`
 --   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+--   ON DELETE CASCADE;
+
+-- ALTER TABLE `movements`
+--   ADD CONSTRAINT `fk_movements_user`
+--   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+--   ON DELETE SET NULL;
+
+-- ALTER TABLE `movements`
+--   ADD CONSTRAINT `fk_movements_note`
+--   FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`)
+--   ON DELETE CASCADE;
+
+-- ALTER TABLE `feelings`
+--   ADD CONSTRAINT `fk_feelings_user`
+--   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+--   ON DELETE SET NULL;
+
+-- ALTER TABLE `feelings`
+--   ADD CONSTRAINT `fk_feelings_note`
+--   FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`)
 --   ON DELETE CASCADE;
 
 COMMIT;
