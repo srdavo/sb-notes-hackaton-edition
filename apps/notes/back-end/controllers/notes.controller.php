@@ -50,4 +50,44 @@ switch ($data["op"]){
 
         echo json_encode($response);
         break;
+
+    case "note_update":
+
+        // 1. Define data array
+        $data_array = [
+            "id" => $data["id"],
+            "user_id" => $userid,
+            "note_content" => htmlspecialchars($data["note_content"], ENT_QUOTES, 'UTF-8'),
+            "row_status" => 1
+        ];
+        
+        // 2. start process with transaction
+        try {
+            $db->autocommit(false);
+
+            // 1. execute the action
+            $Note = new Note($data_array);
+            $result = $Note->update();
+            if(!$result){ throw new Exception('Failed to update note'); }
+
+            // 2. commit transaction
+            $db->commit();
+            $response = [
+                "success" => true,
+                "message" => "note updated successfully"
+            ];
+
+        } catch (Exception $e) {
+            $db->rollback();
+            $response = [
+                "success" => false,
+                "message" => $e->getMessage(),
+                "details" => [
+                    "result" => $result ?? "No result",
+                ]
+            ];
+        }
+
+        echo json_encode($response);
+        break;
 }
