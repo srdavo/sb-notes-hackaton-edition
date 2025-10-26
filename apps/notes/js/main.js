@@ -7,6 +7,9 @@ class Main {
         new PrettyMenu({
             menu: document.getElementById("main-app-menu")
         })
+        new PrettyMenu({
+            menu: document.getElementById("new-note-menu")
+        })
 
         this.noteComponents = {
             saveNote: new SaveNote(),

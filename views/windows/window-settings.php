@@ -32,52 +32,9 @@
                 <md-icon>palette</md-icon>
                 <span>Apariencia</span>
             </button>
-            <button 
-                class="w-nav-button"
-                data-w-section="w-section-information"
-                onclick="toggleWSection('w-section-information', this)"
-                >
-                <md-ripple></md-ripple>
-                <md-icon>info</md-icon>
-                <span>Información</span>
-            </button>
-            <!-- <span class="label-medium hide-on-mobile dm-sans outline-text top-margin-16 bottom-margin-8 left-margin-16">Melon Mind</span> -->
+        
+
             
-
-            <span class="label-medium hide-on-mobile dm-sans outline-text top-margin-16 bottom-margin-8 left-margin-16">Melon Mind</span>
-
-            <button 
-                class="w-nav-button"
-                id="button-open-appts-settings"
-                data-w-section="settings-w-section-appts-settings"
-                onclick="toggleWSection('settings-w-section-appts-settings', this)"
-                >
-                <md-ripple></md-ripple>
-                <md-icon>schedule</md-icon>
-                <span>Citas</span>
-            </button>
-
-            <button 
-                class="w-nav-button"
-                id="button-open-request-billing-system"
-                data-w-section="settings-w-section-request-billing"
-                onclick="toggleWSection('settings-w-section-request-billing', this)"
-                >
-                <md-ripple></md-ripple>
-                <md-icon>euro</md-icon>
-                <span>Facturación</span>
-            </button>
-            <button 
-                class="w-nav-button"
-                data-w-section="settings-w-section-billing"
-                onclick="toggleWSection('settings-w-section-billing', this)"
-                name='button-open-billing-data'
-                data-feature="billing"
-                >
-                <md-ripple></md-ripple>
-                <md-icon>euro</md-icon>
-                <span>Facturación</span>
-            </button>
         </div>
 
         <!-- Accout -->
@@ -123,29 +80,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- <div
-                    class="content-box outline-with-shadow padding-16 border-radius-16 align-center user-select-none cursor-pointer primary-text"
-                    >
-                    <md-ripple></md-ripple>
-                    <span class="simple-container align-center gap-8"><md-icon class="filled">rocket_launch</md-icon>Mi suscripción</span>
-                </div> -->
-                <!-- <div
-                    data-flip-id="animate"
-                    name="button-open-subscription-sub-section"
-                    style="box-shadow: 0 16px 24px -6px rgba(255, 255, 255, 0.3) inset;"
-                    class="content-box primary-container on-primary-container-text outline-with-shadow padding-16 border-radius-16 align-center user-select-none cursor-pointer "
-                    >
-                    <md-ripple></md-ripple>
-                    <span class="simple-container align-center gap-8 dm-sans weight-600"><md-icon class="filled">rocket_launch</md-icon>Mi suscripción</span>
-                </div> -->
-                <div
-                    data-flip-id="animate"
-                    name="button-open-subscription-sub-section"
-                    class="content-box padding-16 border-radius-16 align-center user-select-none cursor-pointer hover-outline"
-                    >
-                    <md-ripple></md-ripple>
-                    <span class="simple-container align-center gap-8 inter">Administrar suscripción</span>
-                </div>
                 <!-- <div class="simple-container grow-1"></div> -->
                 <?php 
                     if(isset($_SESSION["additional_data"])){
@@ -174,22 +108,6 @@
                     <md-ripple></md-ripple>
                     <span class="body-medium error-text inter">Cerrar sesión</span>
                 </div>
-
-                <?php 
-                    // if(isset($_SESSION["additional_data"])){
-                    //     if($_SESSION['additional_data']['permissions'] == 7){
-                    //         echo '
-                    //             <div class="content-box background outline-light-1 overflow-auto">
-                    //                 <span class="body-large weight-500 outline-text">Depuración de sesión (solo admins)</span>
-                    //                 <span class="label-small outline-text">
-                    //                     '.print_r($_SESSION, true).'
-                    //                 </span>
-                    //             </div>
-                    //         ';
-                    //     }
-                    // }
-                ?>
-
             </div>
         </div>
 
@@ -388,47 +306,7 @@
                         <span class="body-large on-surface-variant-text">Elige el estilo de navegación que más te guste </span>
                     </div>
                     <div class="simple-container flex-wrap gap-8 nav-selector-parent" id="nav-selector-parent">
-                        <div 
-                            class="nav-option hide-on-mobile" 
-                            data-nav-option="1"
-                            onclick="changeNav(this)"
-                            >
-                            <md-ripple></md-ripple>
-                            Clásica
-                        </div>
-                        <div 
-                            class="nav-option"
-                            data-nav-option="2"
-                            onclick="changeNav(this)" 
-                            active
-                            >
-                            <md-ripple></md-ripple>
-                            Moderna
-                        </div>
-                        <div 
-                            class="nav-option hide-on-mobile"
-                            data-nav-option="3"
-                            onclick="changeNav(this)"
-                            >
-                            <md-ripple></md-ripple>
-                            Inferior
-                        </div>
-                        <div 
-                            class="nav-option hide-on-mobile"
-                            data-nav-option="2 glass-nav"
-                            onclick="changeNav(this)"
-                            >
-                            <md-ripple></md-ripple>
-                            Detallada
-                        </div>
-                        <div 
-                            class="nav-option hide-on-mobile"
-                            data-nav-option="6"
-                            onclick="changeNav(this)"
-                            >
-                            <md-ripple></md-ripple>
-                            Interesante
-                        </div>
+                        
                         <div 
                             class="nav-option"
                             data-nav-option="7"
@@ -437,22 +315,7 @@
                             <md-ripple></md-ripple>
                             Dock
                         </div>
-                        <div 
-                            class="nav-option hide-on-mobile"
-                            data-nav-option="8"
-                            onclick="changeNav(this)"
-                            >
-                            <md-ripple></md-ripple>
-                            Bonita
-                        </div>
-                        <div 
-                            class="nav-option hide-on-mobile"
-                            data-nav-option="9"
-                            onclick="changeNav(this)"
-                            >
-                            <md-ripple></md-ripple>
-                            Minimalista
-                        </div>
+                        
                         <div 
                             class="nav-option hide-on-mobile"
                             data-nav-option="10"
