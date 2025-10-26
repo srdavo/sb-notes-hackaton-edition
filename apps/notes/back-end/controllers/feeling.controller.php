@@ -67,4 +67,57 @@ switch ($data["op"]){
 
         echo json_encode($response);
         break;
+    case "feeling_get_list":
+
+        $data_array = array_merge(
+            ["user_id" => $userid],
+            $data
+        );
+
+        try {
+            $db->autocommit(false);
+
+            // --- VALIDATIONS ---
+            if (!isset($data_array["user_id"]) || !is_numeric($data_array["user_id"]) || $data_array["user_id"] <= 0) { throw new Exception("Invalid user ID.");}
+            if (!isset($data_array["page"]) || !is_numeric($data_array["page"]) || $data_array["page"] < 0) { $data_array["page"] = 0; }
+            // -------------------
+
+            // --- GET PAGINATION VALUES ---
+            $limit = Pagination::getPageLimit($data_array["limit"] ?? null);
+            $pagination_values = Pagination::PaginationValues($data_array["page"], $limit);
+            $data_array["limit"] = $pagination_values["limit"];
+            $data_array["offset"] = $pagination_values["offset"];
+            // -----------------------------
+
+            // --- GET FEELINGS ---
+            $feelings = Feeling::getFeelings($data_array);
+            if($data_array["limit"] !== "no_limit") {
+                $total_rows = Feeling::getTotalRows($data_array);
+            }else{
+                $total_rows = count($feelings);
+            }
+            // ---------------------
+
+            $db->commit();
+            $response = [
+                "success" => true,
+                "data" => $feelings,
+                "pagination" => [
+                    "total_rows" => $total_rows,
+                    "limit" => $data_array["limit"],
+                    "offset" => $data_array["offset"],
+                ],
+
+            ];
+
+        } catch (Exception $e) {
+            $db->rollback();
+            $response = [
+                "success" => false,
+                "message" => "Error: " . $e->getMessage(),
+            ];
+        }
+
+        echo json_encode($response);
+        break;
 }
