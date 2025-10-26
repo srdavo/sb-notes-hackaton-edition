@@ -16,9 +16,3 @@
 <script type="module" src="js/main.js"></script>
 
 <?php include_once("views/partials/__footer.php"); ?>
-
-<!--
-  Desarrollado por Luis David Elizarraraz Mondaca ("Davo")
-  GitHub: https://github.com/srdavo
-  Basado en Stepbro Software: https://stepbro.site
--->

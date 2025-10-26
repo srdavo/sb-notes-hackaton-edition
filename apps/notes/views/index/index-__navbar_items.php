@@ -13,22 +13,11 @@
       </span>
       <span class="simple-container align-center gap-8">
         <span class="only-on-mobile">Inicio</span>
-        <span class="hide-on-mobile">stepbro</span>
+        <span class="hide-on-mobile">mainotes</span>
       </span>
     </button>
   </div>
   <div class="simple-container grow-0-1 gap-8">
-    <!-- <button 
-      class="nav-button"
-      data-section="section-pricing" 
-      onclick="toggleSection('section-pricing')"
-      >
-      <span class="icon-holder only-on-mobile">
-        <span class="material-symbols-rounded">payments</span>
-      </span>
-      <md-ripple></md-ripple>
-      Precios
-    </button> -->
     
 
     <?php

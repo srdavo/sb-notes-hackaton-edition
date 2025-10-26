@@ -16,13 +16,7 @@ function validatePage(){
                 exit();
             }
 
-            // if(!isset($_COOKIE["codemelon-remember_me"]) || !isset($_SESSION["id"])){
-            //     // echo "Current Page: ".$_SERVER['REQUEST_URI'];
-            //     header ("location: index?redirect");        
-            //     exit();
-            // }
             if(!isset($_SESSION["id"])){
-                // echo "Current Page: ".$_SERVER['REQUEST_URI'];
                 header ("location: index?redirect");        
                 exit();
             }
@@ -36,12 +30,7 @@ function validatePage(){
             header ("location: home");
             exit();
         }
-
-        // $allowedPages = ['index.php', 'consent.php'];
-        // if (in_array($currentPage, $allowedPages)) {
-        //     header ("location: home");
-        //     exit();
-        // }  
+  
     }
 }
 validatePage();

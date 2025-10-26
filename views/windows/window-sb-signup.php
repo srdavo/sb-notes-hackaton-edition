@@ -22,7 +22,7 @@
                                 <rect y="0.696289" width="14.6076" height="14.6076" rx="7.30381" fill="var(--md-sys-color-on-background)"/>
                                 <rect x="16.5786" y="0.696289" width="7.42162" height="14.6076" rx="3.71081" fill="var(--md-sys-color-on-background)"/>
                             </svg> 
-                            Codemelon
+                            Mainotes
                         </div>
                         <span class="display-small bricolage weight-600 on-background-text" style="white-space:nowrap">
                             Crea tu cuenta
@@ -42,7 +42,6 @@
                         <md-filled-tonal-button type="button" onclick="changeWindow('#window-sb-login')" class="solid-light">Ya tengo una cuenta</md-filled-tonal-button>
 
                         <div class="simple-container overflow-hidden border-radius-64">
-                            <!-- Sign In With Google button with HTML data attributes API -->
                             <div id="g_id_onload"
                                 data-client_id="819722503345-qies2hv7hjl6ig525dtau8327qccj82a.apps.googleusercontent.com"
                                 data-context="signin"
@@ -60,7 +59,6 @@
                                 data-logo_alignment="left">
                             </div>
 
-                            <!-- Display the user's profile info -->
                             <div class="pro-data hidden"></div>
                         </div>
                         

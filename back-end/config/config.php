@@ -6,20 +6,20 @@ define('BASE_URL', '/');
 // DATABASES
 // =====================
 $_ENV['db_host']              = 'localhost';
-$_ENV['db_user']              = 'root';
-$_ENV['db_password']          = '';
+$_ENV['db_user']              = 'lesly';
+$_ENV['db_password']          = '!14L02R30T:3';
 $_ENV['db_name']              = 'cocounut_sb';
 
-$_ENV['db_user_mind']         = 'root';
-$_ENV['db_password_mind']     = '';
+$_ENV['db_user_mind']         = 'lesly';
+$_ENV['db_password_mind']     = '!14L02R30T:3';
 $_ENV['db_name_mind']         = 'sb_mind';
 
-$_ENV['db_user_calories']     = 'root';
-$_ENV['db_password_calories'] = '';
+$_ENV['db_user_calories']     = 'lesly';
+$_ENV['db_password_calories'] = '!14L02R30T:3';
 $_ENV['db_name_calories']     = 'sb_calories';
 
-$_ENV["db_user_hackaton"]     = "root";
-$_ENV["db_password_hackaton"] = "";
+$_ENV["db_user_hackaton"]     = "lesly";
+$_ENV["db_password_hackaton"] = "!14L02R30T:3";
 $_ENV['db_name_hackaton']     = 'hackaton';
 
 // =====================

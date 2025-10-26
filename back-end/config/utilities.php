@@ -72,10 +72,10 @@ function currencySymbol() {
               echo '€';
               break;
           default:
-              echo '$'; // Fallback para países no definidos
+              echo '$';
       }
   } else {
-      echo '$'; // Fallback si no se puede obtener el país
+      echo '$'; 
   }
 }
 

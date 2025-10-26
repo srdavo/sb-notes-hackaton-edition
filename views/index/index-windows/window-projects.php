@@ -29,7 +29,7 @@
             <div class="simple-container grow-1 basis-normal direction-column gap-8 justify-center">
                 <span class="display-medium dm-sans line-height-1 weight-500">Melon Mind</span>
                 <p class="headline-small outline-text">
-                Es una plataforma integral diseñada para psicólogos y clínicas, que facilita la gestión de pacientes, citas y finanzas, mientras potencia la organización y la colaboración en equipo.
+                Es una plataforma de notas diseñada para usuarios donde, con integración de IA, facilita el seguimiento y registro de finanzas.
                 </p>
 
                 <div class="simple-container top-margin-16">
@@ -44,11 +44,11 @@
             <div class="simple-container grow-1 basis-normal direction-column gap-8 justify-center">
                 <span class="display-medium dm-sans line-height-1 weight-500">Carded NFC</span>
                 <p class="headline-small outline-text text-wrap-pretty">
-                Carded es una empresa que se especializa en ofrecer soluciones de networking y gestión de contactos para otras empresas.
+                Banorte es uno de los principales bancos del país, ofreciendo servicios financieros, digitales y de inversión.
                 </p>
 
                 <div class="simple-container top-margin-16">
-                    <md-outlined-button href="https://carded.es/" target=" _blank" class="solid">Ir al proyecto <md-icon slot="icon">open_in_new</md-icon></md-outlined-button>
+                    <md-outlined-button href="https://www.banorte.com/" target=" _blank" class="solid">Ir al proyecto <md-icon slot="icon">open_in_new</md-icon></md-outlined-button>
                 </div>
             </div>
         </div>
@@ -57,9 +57,9 @@
                 <img src="assets/stepbro_notes.png" alt="stepbro notes" class="width-100" style="content-visibility: auto;">
             </div>
             <div class="simple-container grow-1 basis-normal direction-column gap-8 justify-center">
-                <span class="display-medium dm-sans line-height-1 weight-500">stepbro Notes</span>
+                <span class="display-medium dm-sans line-height-1 weight-500">Mainotes</span>
                 <p class="headline-small outline-text text-wrap-pretty">
-                    Stepbro Notes es plataforma a para mejorar la organización de tus notas. Cuenta con sistema de carpetas, to-do list con estados personalizables y un diario encriptado.
+                    Mainotes es plataforma a para mejorar la organización de tus notas. Cuenta con sistema de consultas, identificación de sentimientos y movimientos financieros.
                 </p>
 
                 <div class="simple-container top-margin-16">
@@ -75,30 +75,10 @@
             <div class="simple-container grow-1 basis-normal">
                 <img src="assets/eros.png" alt="eros" class="width-100" style="content-visibility: auto;">
             </div>
-            <div class="simple-container grow-1 basis-normal direction-column gap-8 justify-center">
-                <span class="display-medium dm-sans line-height-1 weight-500">Eros</span>
-                <p class="headline-small outline-text">
-                    Empresa de desarrollo web y marketing digital. Ofrecen servicios de diseño web, desarrollo de aplicaciones, SEO, SEM, redes sociales y más.
-                </p>
-
-                <div class="simple-container top-margin-16">
-                    <md-outlined-button href="https://erosdev.com" target=" _blank" class="solid">Ir al proyecto <md-icon slot="icon">open_in_new</md-icon></md-outlined-button>
-                </div>
-            </div>
         </div>
         <div class="content-box direction-row padding-24 light-color flex-wrap user-select-none hover-outline">
             <div class="simple-container grow-1 basis-normal">
                 <img src="assets/earthboundfest.png" alt="earthboundfest" class="width-100" style="content-visibility: auto;">
-            </div>
-            <div class="simple-container grow-1 basis-normal direction-column gap-8 justify-center">
-                <span class="display-medium dm-sans line-height-1 weight-500">Earthbound</span>
-                <p class="headline-small outline-text">
-                    Earthbound es un festival que fusiona fitness, música en vivo, misticismo y gastronomía gourmet. Una celebración donde el ejercicio, la música y la comida se unen para mejorar tu vitalidad y bienestar.
-                </p>
-
-                <div class="simple-container top-margin-16">
-                    <md-outlined-button href="https://https://earthboundfest.com/" target=" _blank" class="solid">Ir al proyecto <md-icon slot="icon">open_in_new</md-icon></md-outlined-button>
-                </div>
             </div>
         </div>
 

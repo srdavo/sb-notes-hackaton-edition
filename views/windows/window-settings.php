@@ -474,7 +474,6 @@
                         <div class="simple-container direction-column gap-8">
                             <div class="simple-container direction-column gap-4">
                                 <span class="headline-small bricolage weight-500">Luis David Elizarraraz Mondaca</span>
-                                <span class="body-medium outline-text">Desarrollador Full Stack | Arquitecto de Software | Diseñador de UI/UX | Fundador del proyecto Melon Mind con iniciativa como Stepbro Mind</span>
                             </div>
 
                             <div class="simple-container top-margin-8 gap-8">
@@ -507,8 +506,7 @@
                     <div class="content-box light-color padding-24 border-radius-8 justify-between">
                         <div class="simple-container direction-column gap-8">
                             <div class="simple-container direction-column gap-4">
-                                <span class="headline-small bricolage weight-500">Álvaro Pérez March</span>
-                                <span class="body-medium outline-text">Cofundador de Melon Mind | Estrategia, Marketing y Conexión con Psicólogos</span>
+                                <span class="headline-small bricolage weight-500">Luis Gael Gonzalez Torres</span>
                             </div>
 
 
@@ -528,7 +526,7 @@
                 <md-icon-button onclick="toggleWSection('#w-section-information')"><md-icon>arrow_back</md-icon></md-icon-button>
             </div>
             <div class="simple-container gpa-8 direction-column">
-                <span class="headline-medium fit-content" data-shared_element_info_title>Codemelon Build</span>
+                <span class="headline-medium fit-content" data-shared_element_info_title>Mainotes Build</span>
                 <span class="body-large outline-text">Información sobre la app y el desarrollador</span>
             </div>
             <div class="simple-container direction-column gap-8" data-shared_element_stepbro_build_info_container>
@@ -566,7 +564,6 @@
             </ul>
         </div>
 
-            <!-- Subscription subsection -->
     
     </holder>
 
@@ -668,13 +665,3 @@
     </md-dialog>
 
 </window>
-
-
-
-
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-        // getUserData();
-        syncUserData();
-    });
-</script> -->

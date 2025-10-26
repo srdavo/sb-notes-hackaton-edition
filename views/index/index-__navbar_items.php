@@ -14,7 +14,7 @@
       </span>
       <span class="simple-container align-center gap-8">
         <span class="only-on-mobile">Inicio</span>
-        <span class="hide-on-mobile">codemelon</span>
+        <span class="hide-on-mobile">Mainotes</span>
       </span>
     </button>
   </div>
@@ -67,9 +67,7 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     const scrollTarget = document.querySelector("#index-scroll-target");
 
-    // Escucha el evento de scroll
     scrollTarget.addEventListener('scroll', function() {
-      // Obtén el valor de scroll
       const scrollValue = scrollTarget.scrollTop;
 
       if (scrollValue > 520) {
@@ -83,31 +81,3 @@
   });
   
 </script>
-
-
-
-
-<!-- <button 
-  class="nav-button"
-  data-section="section-login" 
-  onclick="toggleSection('section-login')"
-  >
-  <md-ripple></md-ripple>
-  <span class="icon-holder">
-    <span class="material-symbols-rounded">login</span>
-  </span>
-  <span>Iniciar sesión</span>
-</button>
-
-<button 
-  class="nav-button"
-  data-section="section-signup" 
-  onclick="toggleSection('section-signup')"
-  >
-  <md-ripple></md-ripple>
-  <span class="icon-holder">
-    <span class="material-symbols-rounded">person_add</span>
-  </span>
-  <span>Crear cuenta</span>
-</button> -->
-

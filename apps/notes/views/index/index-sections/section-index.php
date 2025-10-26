@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <h1 class="main-title margin-0 text-center-on-mobile text-center text-wrap-pretty">stepbro AI</h1>
+        <h1 class="main-title margin-0 text-center-on-mobile text-center text-wrap-pretty">stmainotesepbro AI</h1>
       </div>
     </div>
 
@@ -54,25 +54,6 @@
 
   </div>
 
-  <!-- <div class="simple-container direction-column width-100 max-width-600 align-center height-100 grow-1">
-    <div class="simple-container direction-column ">
-      <div class="simple-container direction-column align-center gap-24">
-
-        <div class="simple-container align-center" style="">
-          <div class="content-box padding-16 border-radius-24 hover-scale-small" style="background: linear-gradient(to bottom, var(--md-sys-color-background), var(--md-sys-color-surface-container-highest));">
-            <md-icon class="filled pretty-minimal primary-container-text">star_shine</md-icon>
-          </div>
-        </div>
-
-        <h1 class="main-title margin-0 text-center-on-mobile text-center text-wrap-pretty">stepbro AI</h1>
-      </div>
-    </div>
-    <div class="simple-container max-width-600 top-margin-16 bottom-margin-16">
-      <span class="title-text outline-text text-center">
-        ¿Qué quieres?, preguntale a stepbro AI.
-      </span>
-    </div>
-    <div class="simple-container top-margin-16 flex-wrap justify-center gap-8">
       <?php
         if(isset($_SESSION['id'])){
           echo "
@@ -107,25 +88,18 @@
   
         
     <div class="simple-container direction-column padding-32">
-      <span class="headline-medium dm-sans weight-600">¿Qué es stepbro AI?</span>
+      <span class="headline-medium dm-sans weight-600">¿Qué es mainotes AI?</span>
       <p class="headline-small dm-sans outline-text r">
-        stepbro AI es una inteligencia artificial diseñada para asistirte en la gestión de tus tareas, completamente integrada con stepbro Notes para una experiencia sincronizada y eficiente.
+        mainotes AI es una inteligencia artificial diseñada para asistirte en la gestión de tus tareas, completamente integrada con Mai Notes para una experiencia sincronizada y eficiente.
       </p>
     </div>
 
     <div class="simple-container direction-column padding-32">
       <span class="headline-medium dm-sans weight-600">¿Por qué existe?</span>
       <p class="headline-small dm-sans outline-text r">
-      stepbro AI nace de la necesidad de pasar la materia de Agentes inteligentes y Reconocimiento de voz.
+      mainotes AI nace de la necesidad de pasar la materia de Agentes inteligentes y Reconocimiento de voz.
       </p>
     </div>
-
-    <!-- <div class="content-box align-center top-margin-24 background-blured-8">
-      <span class="display-small dm-sans weight-500">¿Por qué existe?</span>
-      <p class="headline-small dm-sans outline-text text-center">
-        stepbro AI nace de la necesidad de pasar la materia de Agentes inteligentes y Reconocimiento de voz.
-      </p>
-    </div> -->
 
 
 
@@ -144,7 +118,6 @@
             </svg>
             <span class="bricolage weight-600 headline-medium">stepbro</span>
           </div>
-          <p class="outline-text dm-sans">Tu empresa de desarrollo web de confianza.</p>
         </div>
 
 
@@ -153,7 +126,7 @@
           <div class="simple-container direction-column">
             <button class="style-4 background on-background-text dm-sans" onclick="window.location.href='mailto:stepbro.corp@gmail.com'; return false;">
               <md-icon class="filled primary-text">mail</md-icon>
-              <span id="copy-contact-email-value">stepbro.corp@gmail.com</span>
+              <span id="copy-contact-email-value">stmainotesepbro.corp@gmail.com</span>
               <md-ripple></md-ripple>
             </button>
             <button class="style-4 background on-background-text dm-sans" onclick="window.location.href='mailto:luisdavid.gris@gmail.com'; return false;">

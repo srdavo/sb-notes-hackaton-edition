@@ -12,7 +12,7 @@
             <div class="simple-container">
                 <div class="simple-container align-center gap-4 dm-sans body-large weight-500 user-select-none">
                     <md-icon class="filled dynamic" aria-hidden="true">cognition</md-icon>
-                    Melon Mind
+                    Mainotes
                 </div>
             </div>
 
@@ -65,7 +65,6 @@
                                 data-logo_alignment="left">
                             </div>
     
-                            <!-- Display the user's profile info -->
                         </div>
                     </div>
                 </div>

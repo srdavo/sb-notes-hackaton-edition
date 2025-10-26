@@ -22,7 +22,7 @@
                                 <rect y="0.696289" width="14.6076" height="14.6076" rx="7.30381" fill="var(--md-sys-color-on-background)"/>
                                 <rect x="16.5786" y="0.696289" width="7.42162" height="14.6076" rx="3.71081" fill="var(--md-sys-color-on-background)"/>
                             </svg> 
-                            Codemelon
+                            Mainotes
                         </div>
                         <span class="display-small weight-600 top-margin-8 on-background-text bricolage">
                             Bienvenido(a)
@@ -61,7 +61,6 @@
                                 data-logo_alignment="left">
                             </div>
 
-                            <!-- Display the user's profile info -->
                         </div>
                     </div>
                 </div>
