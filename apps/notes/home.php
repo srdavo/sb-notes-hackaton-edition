@@ -11,9 +11,7 @@ include_once '../../back-end/config/utilities.php';
 
 <main>
   
-  <nav class="nav-style-10" id="nav-parent">
-    <?php include_once 'views/partials/__navbar_items.php'; ?>
-  </nav>
+ 
   <holder>
     
     <?php 

@@ -13,9 +13,11 @@ export class SaveNote {
         this.saveTimeout = null; // Para controlar el debounce del auto-guardado
         this.saveDelay = 1000; // Delay en milisegundos (1 segundo)
         this.textEditor = null; // Instancia del editor
+        this.savedIndicatorTimeout = null; // Para controlar el delay del indicador de guardado
         
         this.dom = {
-
+            buttonNewNote: document.getElementById("button-new-note"),
+            saveStatusIcon: document.getElementById("save-status-icon")
         }
 
     }
@@ -32,6 +34,16 @@ export class SaveNote {
         if(!this.isInit){
             this.isInit = true;
             this.#setupEditor();
+            this.#setupEventListeners();
+        }
+    }
+
+    #setupEventListeners() {
+        // Listener para el botón de nueva nota
+        if (this.dom.buttonNewNote) {
+            this.dom.buttonNewNote.addEventListener("click", () => {
+                this.createNewNote();
+            });
         }
     }
 
@@ -60,9 +72,55 @@ export class SaveNote {
         }, this.saveDelay);
     }
 
+    #setSaveStatus(status) {
+        if (!this.dom.saveStatusIcon) return;
+        
+        // Limpiar timeout anterior si existe
+        if (this.savedIndicatorTimeout) {
+            clearTimeout(this.savedIndicatorTimeout);
+        }
+        
+        if (status === 'saving') {
+            this.dom.saveStatusIcon.classList.add('filled');
+            this.dom.saveStatusIcon.textContent = 'cloud_upload';
+        } else if (status === 'saved') {
+            this.dom.saveStatusIcon.classList.add('filled');
+            this.dom.saveStatusIcon.textContent = 'cloud_done';
+            
+            // Después de 2 segundos, quitar la clase filled
+            this.savedIndicatorTimeout = setTimeout(() => {
+                this.dom.saveStatusIcon.classList.remove('filled');
+            }, 2000);
+        } else if (status === 'error') {
+            this.dom.saveStatusIcon.classList.add('filled');
+            this.dom.saveStatusIcon.textContent = 'cloud_off';
+        }
+    }
+
+    createNewNote() {
+        // Resetear el ID para crear una nueva nota
+        this.currentNoteId = null;
+        this.currentNoteData = {
+            id: null,
+            note_name: 'Nueva nota',
+            note_content: ''
+        };
+        
+        // Limpiar el editor
+        if (this.textEditor && this.textEditor.editor) {
+            this.textEditor.editor.commands.setContent('');
+            this.textEditor.editor.commands.focus();
+        }
+        
+        console.log('Editor listo para nueva nota');
+    }
+
     async saveNote(props){
         try {
             const { content } = props;
+            
+            // Indicar que se está guardando
+            this.#setSaveStatus('saving');
             
             // Si tenemos un noteId, actualizamos la nota existente
             if (this.currentNoteId) {
@@ -95,9 +153,16 @@ export class SaveNote {
                 }
             }
             
+            // Indicar que se guardó correctamente
+            this.#setSaveStatus('saved');
+            
         } catch (error) {
             console.error('Error al guardar la nota:', error.message || error);
             console.error('Detalles del error:', error);
+            
+            // Indicar que hubo un error
+            this.#setSaveStatus('error');
+            
             // Opcionalmente puedes mostrar un mensaje al usuario
             // message(`Error al guardar: ${error.message}`, 'error');
         }

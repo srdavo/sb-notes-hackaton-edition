@@ -1,7 +1,12 @@
 import { SaveNote } from "./managers/SaveNote.js";
+import { PrettyMenu } from "./components/PrettyMenu.js"
 
 class Main {
     constructor() {
+
+        new PrettyMenu({
+            menu: document.getElementById("main-app-menu")
+        })
 
         this.noteComponents = {
             saveNote: new SaveNote(),

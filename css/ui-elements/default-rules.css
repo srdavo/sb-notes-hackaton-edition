@@ -227,6 +227,7 @@
 
 .outline-1{box-shadow: 0px 0px 0px 1px var(--md-sys-color-outline-variant);}
 .outline-light-1{box-shadow: 0px 0px 0px 1px var(--md-sys-color-surface-container-high) inset;}
+.outline-light-3{box-shadow: 0px 0px 0px 3px var(--md-sys-color-surface-container-high) inset;}
 .outline-1-light{box-shadow: 0px 0px 0px 1px var(--md-sys-color-inverse-on-surface);}
 .outline-1-light-inset{box-shadow: 0px 0px 0px 1px var(--md-sys-color-inverse-on-surface) inset;}
 .outline-with-shadow{
