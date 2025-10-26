@@ -40,22 +40,6 @@ const paymentService = (() => {
         }
     }
 
-    // async function createCheckoutSession() {
-    //     const data = { op: "create_checkout_session" };
-        
-    //     const response = await fetch(API_URL, {
-    //         method: 'POST',
-    //         headers: {
-    //             'X-CSRF-Token': CSRF_TOKEN,
-    //             'Content-Type': 'application/json'
-    //         },
-    //         credentials: 'same-origin',
-    //         body: JSON.stringify(data)
-    //     });
-        
-    //     return await response.json();
-    // }
-
     async function checkPaymentStatus(sessionId) {
         const data = { op: "check_payment_status", session_id: sessionId };
         

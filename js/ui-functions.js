@@ -18,15 +18,6 @@ function toggleSection(objetiveSectionId, specialScrollTarget = false) {
     return;
   }
 
-  // if (!document.startViewTransition) {
-  //   updateDom(objetiveSectionId);
-  //   return;
-  // }
-
-  // const transition = document.startViewTransition(() => {
-    // updateDom(objetiveSectionId)
-  // });
-  // transition.finished
   updateDom(objetiveSectionId);
   function updateDom( objetiveSectionId ) {
     if(activeSection) {activeSection.removeAttribute('active'); activeSection.classList.remove("section-open");}
@@ -152,10 +143,8 @@ function checkEmpty(parentId, elementToCheck){
   const parentElement = document.querySelector(parentId);
   if(!parentElement){return;}
   const allInputs = parentElement.querySelectorAll(`${materialT(elementToCheck)}, ${elementToCheck}`);
-  // console.log(allInputs);
 
   const inputs = Array.from(allInputs).filter(input => !input.hasAttribute('data-allow-empty'));
-  // console.log(inputs)
 
   validation = 0;
   for (let i=0; i<inputs.length; i++){
@@ -225,7 +214,6 @@ function toggleWindowFullSize(){
 function toggleWindow(windowId, position, scale, appearStyle = false, customOrigin = false){
  
   const caller = new Error().stack.split('\n')[2];
-  // console.log("ToggleWindow called by:", caller.trim());
   if (windowId == ''){windowId = null}
 
   const windowNew = document.querySelector(windowId);
@@ -243,7 +231,6 @@ function toggleWindow(windowId, position, scale, appearStyle = false, customOrig
     transparent.removeAttribute('data-beautiful_transparent');
   }
 
-  // Close any other open window
 
   
   const activeWindow = transparent.querySelector('window.active');
@@ -261,24 +248,15 @@ function toggleWindow(windowId, position, scale, appearStyle = false, customOrig
     if (transparent.hasAttribute("closing")) { return; }
     toggleOvermessage();
 
-    // const activeWindowState = Flip.getState(activeWindow);
     const windowAnimationId = activeWindow.getAttribute("data-window-toggler-id");
     const originButton = document.querySelector(`[data-button-toggler-id="${windowAnimationId}"]`);
 
-    // console.log(windowAnimationId, originButton)
-    
-    
-    
-    // This attribute added and all makes the close animation smooth
     
     transparent.setAttribute("closing", "");
-    // const windowHolderWidth = activeWindow.querySelector("holder").offsetWidth;
-    // activeWindow.querySelector("holder").style.minWidth = `${windowHolderWidth}px`;
     if(originButton) applyAnimationReverse(Flip.getState(originButton), activeWindow, true, true, false, false)
     
     setTimeout(() => {
       closingAnimation();
-      // activeWindow.querySelector("holder").style.minWidth = "initial";
     }, 480);
 
     
@@ -290,11 +268,9 @@ function toggleWindow(windowId, position, scale, appearStyle = false, customOrig
     transparent.removeAttribute("closing");
   }
 
-  // remove useless classes
   transparent.classList.remove('dynamic', 'right', 'left', 'top', 'bottom');
 
 
-  // Window to open
   if (!windowNew) { return; }
   transparent.classList.add('active'); 
   localStorage.setItem("currentWindow", windowId); 
@@ -316,21 +292,14 @@ function toggleWindow(windowId, position, scale, appearStyle = false, customOrig
   if(element) {
   
     if (element && element.tagName && element.tagName.toLowerCase() === "md-menu-item") {
-      // console.log(element.closest("[data-menu-toggler]"))
       const menuTogglerId = element.closest("md-menu").getAttribute("anchor")
       const menuTogglerButton = document.getElementById(menuTogglerId);
       if(menuTogglerButton) element = menuTogglerButton
-      // console.log(element.closest("md-menu"))
     }
 
     element.setAttribute("data-button-toggler-id", randomNumber);
   };
   windowNew.setAttribute("data-window-toggler-id", randomNumber);
-  // if(originElement){
-  //   element = document.getElementById(originElement);
-  // }
-
-  // specific functions per window
   switch (windowId) {
     case "#window-account": 
       getUserData()
@@ -338,7 +307,6 @@ function toggleWindow(windowId, position, scale, appearStyle = false, customOrig
     default: break;
   }
 
-  // Set element with Dynamic position
   if(position == "absolute"){
     windowNew.classList.add("absolute");
     var rect = element.getBoundingClientRect();
@@ -375,14 +343,6 @@ function toggleWindow(windowId, position, scale, appearStyle = false, customOrig
       transparent.classList.add("bottom");
     }
     
-    
-    // requestAnimationFrame(function() {
-    //   var windowHeight = windowNew.offsetHeight;
-    //   var windowBottom = screenHeight - (windowNew.offsetTop + windowNew.offsetHeight);
-      
-    //   var windowWidth = windowNew.offsetWidth;
-
-    // });
   }
   if(scale === undefined){scale = 0}else{scale = 1}
   animate(element, windowNew, position, scale);
@@ -391,12 +351,6 @@ function animate(element, windowNew, position, scale){
   let easeType = CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 ");
   if(position === "absolute" && window.innerWidth >= 681){
     easeType = CustomEase.create("custom", "M0,0 C0.249,-0.124 0.04,0.951 0.335,1 0.684,1.057 0.614,0.964 1,1");
-    // easeType = CustomEase.create("custom", "M0,0 C0.311,0 0.118,0.629 0.319,0.872 0.457,1.039 0.818,1.001 1,1 ");
-    
-    // easeType = CustomEase.create("custom", "M0,0 C0.249,-0.124 -0.003,0.896 0.325,1.044 0.653,1.191 0.585,0.935 1,1 ");
-    // easeType = CustomEase.create("custom", "M0,0 C0.249,-0.124 0.026,0.939 0.335,1.013 0.685,1.097 0.585,0.935 1,1 ");
-    
-    // easeType = CustomEase.create("custom", "M0,0 C0.249,-0.124 0.045,0.925 0.335,1 0.625,1.074 0.532,0.987 1,1");
   }
 
   if (scale === 0 || window.innerWidth >= 681) {
@@ -414,17 +368,6 @@ function animate(element, windowNew, position, scale){
     duration: 0.7,
     scale: scaleValue,
     ease: easeType,
-    // ease: CustomEase.create("custom", "M0,0 C0.154,0 0.165,0.541 0.324,0.861 0.532,1.281 0.524,1 1,1 "),
-    // ease: CustomEase.create("custom", "M0,0 C0.154,0 0.18,0.666 0.35,0.861 0.562,1.106 0.611,1 1,1 "),
-    // ease: CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 "),
-    // ease: CustomEase.create("easeName", ".47,.29,0,1"),
-    // ease: CustomEase.create("easeName", ".58,.18,0,1"),
-    // ease: CustomEase.create("easeName", ".21,.19,0,1"),
-    // ease: CustomEase.create("emphasized", "0.2, 0, 0, 1"),
-    // ease: CustomEase.create("classic", "0.1, 0.8, 0, 1"),
-    // ease: CustomEase.create("classic", "0.4, 0.4, 0, 1.2"),
-    // ease: CustomEase.create("custom", "M0,0 C0.099,0 0.133,0.915 0.325,1.044 0.642,1.257 0.64,0.938 1,1 "),
-    // ease: CustomEase.create("custom", "M0,0 C0.249,-0.124 -0.003,0.896 0.325,1.044 0.653,1.191 0.585,0.935 1,1 "),
     absolute: true,
   })
     
@@ -440,10 +383,8 @@ function currencySymbol() {
 }
 
 function formatMoney(amount) {
-  // Get user timezone to approximately determine region
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   
-  // Default to EUR
   let currency = 'EUR';
   
   // Check if timezone is in Americas
@@ -486,14 +427,10 @@ function dateToShort(date, showYear = false) {
 }
 
 function dateToFullText(dateString, showYear = false, showMonth = true) {
-  // --- 1. Validación de Entrada ---
   if (!dateString || typeof dateString !== "string") {
-    // Retorna un mensaje claro si la entrada no es válida.
     return "Por favor, selecciona una fecha válida.";
   }
 
-  // --- 2. Preparación de la Fecha ---
-  // Se aísla solo la parte de la fecha si el formato es datetime (ej: "2025-07-21 10:00:00").
   const datePart = dateString.split(" ")[0];
   const parts = datePart.split("-");
 
@@ -501,57 +438,40 @@ function dateToFullText(dateString, showYear = false, showMonth = true) {
     return "Formato de fecha inválido. Utiliza YYYY-MM-DD.";
   }
 
-  // --- 3. Creación del Objeto Date de Forma Segura ---
-  // Se convierte cada parte a número para crear el objeto Date.
   const [year, month, day] = parts.map(Number);
 
-  // Se verifica que los componentes de la fecha sean números válidos.
   if (isNaN(year) || isNaN(month) || isNaN(day)) {
     return "Componentes de fecha inválidos. Utiliza YYYY-MM-DD.";
   }
 
-  // Se crea el objeto Date usando los componentes numéricos.
-  // Este método (new Date(y, m-1, d)) crea la fecha en la zona horaria local del usuario,
-  // evitando problemas comunes de conversión a UTC que ocurren con new Date('YYYY-MM-DD').
   const dateObj = new Date(year, month - 1, day);
 
-  // Se comprueba que la fecha creada sea válida (ej. previene "2025-02-30").
-  // El constructor de Date "corrige" fechas inválidas (ej. 30 de feb lo pasa a marzo),
-  // por lo que comparamos si la fecha resultante coincide con la entrada.
   if (dateObj.getFullYear() !== year || dateObj.getMonth() !== month - 1 || dateObj.getDate() !== day) {
     return "La fecha proporcionada no es válida (ej. el día no existe en el mes).";
   }
 
-  // --- 4. Formateo con la API de Internacionalización (Intl) ---
-  // Se definen las opciones de formato. Es más declarativo y mantenible.
   const options = {
-    weekday: 'long', // ej: "lunes"
-    day: 'numeric',  // ej: "21"
+    weekday: 'long', 
+    day: 'numeric', 
   };
 
   if (showMonth) {
-    options.month = 'long';   // ej: "julio"
+    options.month = 'long';  
   }
 
   if (showYear) {
-    options.year = 'numeric'; // ej: "2025"
+    options.year = 'numeric'; 
   }
 
-  // Se utiliza 'es-MX' como localizador para español de México.
-  // Intl se encarga de formatear la fecha correctamente según las reglas del idioma.
   const formatter = new Intl.DateTimeFormat('es-MX', options);
   let formattedDate = formatter.format(dateObj);
 
-  // --- 5. Ajuste Final de Formato ---
-  // Se capitaliza la primera letra para un resultado más pulcro (ej: "Lunes" en vez de "lunes").
   return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 }
 
 function timeToAmPm(input) {
-    // Si la entrada es nula o vacía, regresa un string vacío.
     if (!input) return '';
 
-    // --- CASO 1: La entrada es un objeto Date (¡el caso nuevo y correcto!) ---
     if (input instanceof Date && !isNaN(input)) {
         let hours = input.getHours();
         let minutes = input.getMinutes();
@@ -560,28 +480,24 @@ function timeToAmPm(input) {
         hours = hours % 12;
         hours = hours ? hours : 12; // La hora '0' (medianoche) se convierte en '12'
 
-        // Asegura que los minutos siempre tengan dos dígitos (ej: "05")
         const minutesStr = String(minutes).padStart(2, '0');
 
         return `${hours}:${minutesStr} ${ampm}`;
     }
 
-    // --- CASO 2: La entrada es un string (tu lógica original) ---
     if (typeof input === 'string') {
         let timePart = input;
         
-        // Extrae solo la parte de la hora si es una fecha completa
         if (input.includes(' ')) {
             timePart = input.split(' ')[1];
         }
 
-        // Si no hay dos puntos, no es un formato de hora válido
         if (!timePart.includes(':')) return ''; 
         
         const [hoursStr, minutesStr] = timePart.split(':');
         let hour = parseInt(hoursStr, 10);
         
-        if (isNaN(hour)) return ''; // Si la hora no es un número, sale
+        if (isNaN(hour)) return ''; 
 
         const ampm = hour >= 12 ? 'PM' : 'AM';
         hour = hour % 12;
@@ -590,7 +506,6 @@ function timeToAmPm(input) {
         return `${hour}:${minutesStr} ${ampm}`;
     }
     
-    // Si la entrada no es ni un Date válido ni un string, regresa vacío.
     return '';
 }
 
@@ -601,25 +516,6 @@ function formatTime(time){
   return `${hours}:${minutes}`;
 }
 
-// function toggleTab(windowId, tabId, workHidden){
-//   const windowElement = document.getElementById(windowId);
-//   const currentActiveTab = windowElement.querySelector('.md-tab[active]');
-//   if (currentActiveTab) {currentActiveTab.removeAttribute('active');}
-
-
-//   if(workHidden){
-//     const currentActiveTabSelector = windowElement.querySelector('md-tabs [active]');
-//     if (currentActiveTabSelector) {currentActiveTabSelector.removeAttribute('active');}
-//     const objetiveTabSelector = windowElement.querySelector('[data-tab-id="'+tabId+'"]');
-//     objetiveTabSelector.setAttribute('active', '');
-//   }
-
-  
-
-//   const objetiveTab = windowElement.querySelector('.md-tab[id="'+tabId+'"]');
-//   objetiveTab.setAttribute('active', '');
-  
-// }
 function toggleMdTab(origin = false, tabId){
   var desiredPanel = false;
   if(origin){
@@ -629,10 +525,6 @@ function toggleMdTab(origin = false, tabId){
   if(!origin && tabId != undefined){
     desiredPanel = document.getElementById(tabId);
   }
-  // if(!origin){
-  //   const currentActiveTab = document.querySelector("md-tab[active]");
-  // }
-  // falta por trabajar
   
   if(!desiredPanel) return;
   
@@ -643,11 +535,6 @@ function toggleMdTab(origin = false, tabId){
   desiredPanel.setAttribute("active", "");
 }
 
-// function addTableRow(tableId, templateId){
-//   const table = document.getElementById(tableId);
-//   const template = document.getElementById(templateId);
-
-// }
 function applyAnimation(state, target, scale = true, absolute = false, customEase = false, zIndex = false){
   easeToUse = CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 ")
   if(!zIndex){zIndex = 0}else{zIndex = 100}
@@ -783,14 +670,6 @@ function toggleWSection(wSectionId, originButton){
 
   const activeWSectionParent = activeWSection.parentElement;
   const objetiveWSectionParent = objetiveWSection.parentElement;
-  // objetiveWSectionParent.style.background = "blue";
-
-  // objetiveWSection.style.background = "red";
-
-
-  // activeWSectionParent.style.background = "red";
-  // objetiveWSectionParent.style.background = "blue";
-
 
   if(activeWSectionParent !== objetiveWSectionParent){
 
@@ -876,14 +755,9 @@ function toggleSubSection(subSectionId, options = { exclusive: false, hardExclus
         });
     }
 
-    // If we try to open the already active subsection, dont do anything
     if (subSection.hasAttribute("active") && options.action === "open") return false;
     
-    // --- FIX STARTS HERE ---
-    // If we try to close an already closed subsection, dont do anything
     if (!subSection.hasAttribute("active") && options.action === "close") return false;
-    // --- FIX ENDS HERE ---
-
 
     if (options.animationType) {
         if (options.animationType === "from-origin") {
@@ -938,158 +812,20 @@ function toggleSubSection(subSectionId, options = { exclusive: false, hardExclus
 
 
 function addMinutesToDate(datetime, minutes) {
-  // Crear objeto Date desde el parámetro datetime
-  // Date() puede procesar strings en formato ISO, timestamps, etc.
   const date = new Date(datetime);
   
-  // Verificar que la fecha sea válida
   if (isNaN(date.getTime())) {
     throw new Error('Fecha inválida proporcionada');
   }
   
-  // Verificar que minutes sea un número entero
   if (!Number.isInteger(minutes)) {
     throw new Error('Los minutos deben ser un número entero');
   }
   
-  // Sumar los minutos (convertir a milisegundos)
   const newDate = new Date(date.getTime() + (minutes * 60 * 1000));
   
-  // Retornar la nueva fecha
   return newDate;
 }
-
-
-
-// function toggleSubSection(subSectionId, options = {exclusive: false, hardExclusive: false}){
-//   const currentMainSection = document.querySelector('section[active]');
-//   const subSection = document.querySelector(subSectionId);
-  
-//   const mainParent = subSection.parentElement;
-//   var activeContent = mainParent.querySelectorAll(':scope > *:not([data-sub-section]:not([active]))');
-//   activeContent = Array.from(activeContent).filter(element => element !== subSection);
-//   // console.log(activeContent);
-  
-  
-//   if(options.exclusive) {
-//     // Close any other active subsections
-//     let activeSubSections = currentMainSection.querySelectorAll(`[data-sub-section][active]`);
-//     if(options.hardExclusive) activeSubSections = [...document.querySelectorAll(`[data-sub-section][active][data-allow-hard-exclusive]`)];
-//     activeSubSections.forEach(section => {
-//       if(section.id != subSection.id) {
-        
-//         section.toggleAttribute('sub-section-in-animation-out');
-//         section.addEventListener("animationend", () => { 
-//           section.removeAttribute('sub-section-in-animation-out');
-//           section.removeAttribute('active');
-//         }, {once: true});
-//       }
-//     });
-//   }
-//   // const desireSubSectionState = Flip.getState(subSection); close
-//   // const eventOriginState = Flip.getState(event.currentTarget);
-
-//   // If we try to open the already active subsection, dont do anything
-//   if(subSection.hasAttribute("active") && options.action === "open") return false;
-
-//   if(options.animationType) {
-//     if(options.animationType === "from-origin" && event.currentTarget){
-//       if(options.customOrigin){
-//         var eventOriginState = Flip.getState(options.customOrigin);
-//       }else{
-//         var eventOriginState = Flip.getState(event.currentTarget);
-//       }
-      
-
-//       subSection.toggleAttribute("active");
-//       subSection.setAttribute("sub-section-simple-in-animation", "");
-      
-//       Flip.from(eventOriginState, {
-//         ease: CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 "),
-//         // ease: CustomEase.create("easeName", "0.38,0.49,0,1"),
-//         targets: subSection,
-//         duration: 0.7,
-//         toggleClass: "apply-blur-animation-2",
-//         scale:true,
-//         onComplete: () => {subSection.removeAttribute("sub-section-simple-in-animation")}
-//       }).play();
-
-      
-      
-//     }
-//     // console.log("hello")
-//     return;
-//   }
-  
-
-//   if(subSection.hasAttribute('active')){
-    
-//     subSection.toggleAttribute('sub-section-in-animation-out');
-//     subSection.addEventListener("animationend", () => { 
-//       subSection.removeAttribute('sub-section-in-animation-out');
-
-//       const activeContentState = Flip.getState(activeContent);
-//       subSection.removeAttribute('active');
-
-//        Flip.from(activeContentState, {
-//           // ease: CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 "),
-//           ease: CustomEase.create("easeName", "0.38,0.49,0,1"),
-//           // ease: CustomEase.create("custom", "M0,0 C0.249,-0.124 0.04,0.951 0.335,1 0.684,1.057 0.614,0.964 1,1"),
-//           // ease: CustomEase.create("custom", "M0,0 C0.298,0 0.261,0.696 0.419,0.91 0.575,1.121 0.736,0.972 1,1 "),
-//           // targets: subSections,
-//           duration: .3,
-//           // scale:true,
-//           // toggleClass: "apply-blur-animation-2",
-//           simple:true,
-//           absolute:false,
-//         }).play();
-
-//     }, {once: true});
-//   }else{
-//     // Open the subsection
-//     subSection.toggleAttribute('active');
-//     subSection.toggleAttribute('sub-section-in-animation');
-//     subSection.addEventListener("animationend", () => { 
-//       subSection.removeAttribute('sub-section-in-animation');
-//     }, {once: true});
-//   }
-
-  
-
-  
-
-
-  
-
-
-
-//   // Flip.from(activeContentState, {
-//   //   // ease: CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 "),
-//   //   // ease: CustomEase.create("easeName", "0.38,0.49,0,1"),
-//   //   ease: CustomEase.create("custom", "M0,0 C0.249,-0.124 0.04,0.951 0.335,1 0.684,1.057 0.614,0.964 1,1"),
-//   //   // ease: CustomEase.create("custom", "M0,0 C0.298,0 0.261,0.696 0.419,0.91 0.575,1.121 0.736,0.972 1,1 "),
-//   //   // targets: subSections,
-//   //   duration: 1,
-//   //   scale:true,
-//   //   // toggleClass: "apply-blur-animation-2",
-//   //   simple:true,
-//   //   // absolute:true,
-//   // }).play();
-
-//   // Flip.from(eventOriginState, {
-//   //   ease: CustomEase.create("custom", "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1 "),
-//   //   // ease: CustomEase.create("easeName", "0.38,0.49,0,1"),
-//   //   targets: subSection,
-//   //   duration: 0.7,
-//   //   toggleClass: "apply-blur-animation-2",
-//   //   scale:true,
-//   //   // simple:true,
-//   // }).play();
-
-  
-
-
-// }
 
 function flowStep(step, parent = document, animations = true){
   const currentOpenStep = parent.querySelector("[data-step][active]");
@@ -1104,17 +840,14 @@ function flowStep(step, parent = document, animations = true){
         flowChilds(newStep);
       }, {once: true});
     } else {
-      // Skip animations and update directly
       currentOpenStep.removeAttribute("active");
       const newStep = parent.querySelector(`[data-step='${step}']`);
       newStep.setAttribute("active", "");
-      // Make all children visible immediately
       Array.from(newStep.children).forEach(el => {
         el.style.opacity = 1;
       });
     }
   } else {
-    // No current step, just open the new one
     const newStep = parent.querySelector(`[data-step='${step}']`);
     if(newStep) {
       newStep.setAttribute("active", "");
@@ -1136,24 +869,21 @@ function flowChilds(parent, options = {startOpacity: 0, animationVariant: "", be
   options.keepAnimation = options.keepAnimation || false;
   options.target = options.target || false;
 
-  // Select elements based on options.target if provided, otherwise use direct children
   const elements = options.target 
     ? Array.from(parent.querySelectorAll(options.target)) 
     : Array.from(parent.children);
 
   elements.forEach((el, index) => {
-      // check if the element has any other animation on him, here we would need to specify the animation variants
       el.classList.remove("animation-item-out-bottom");
 
       el.style.opacity = options.startOpacity;
       el.style.animationDelay = `${index * options.betweenDelay}s`; // Retraso de 0.2s por elemento
-      el.classList.add(`search-result-item-in${options.animationVariant}`); // Agrega la clase que activa la animación
+      el.classList.add(`search-result-item-in${options.animationVariant}`);
       el.addEventListener("animationend", () => {
           if(!options.keepAnimation){
             el.classList.remove(`search-result-item-in${options.animationVariant}`)
             el.style.opacity = 1;
           }
-          // el.classList.remove(`search-result-item-in${options.animationVariant}`)
       }, {once: true})
   });
 }
@@ -1168,8 +898,8 @@ function flowChildsOut(parent, options = {startOpacity: 0, animationVariant: "",
   Array.from(parent.children).forEach((el, index) => {
       
     el.style.opacity = options.startOpacity;
-    el.style.animationDelay = `${index * options.betweenDelay}s`; // Retraso de 0.2s por elemento
-    el.classList.add(`animation-item-out${options.animationVariant}`); // Agrega la clase que activa la animación
+    el.style.animationDelay = `${index * options.betweenDelay}s`;
+    el.classList.add(`animation-item-out${options.animationVariant}`);
     el.addEventListener("animationend", () => {
         el.classList.remove(`animation-item-out${options.animationVariant}`)
         el.style.opacity = "0"
@@ -1191,16 +921,8 @@ function htmlspecialchars(value){
 }
 
 
-// function lazyLoad(){
-
-// }
-
 function convertUTCToLocal(utcDateString) {
-  // Create a Date object from the UTC string
   const utcDate = new Date(utcDateString.replace(' ', 'T') + 'Z');
-
-  // Use Intl.DateTimeFormat to format the date in the user's local timezone
-  // This automatically handles DST and other timezone rules.
   const options = {
     year: 'numeric',
     month: '2-digit',
@@ -1211,10 +933,8 @@ function convertUTCToLocal(utcDateString) {
     hour12: false // Use 24-hour format
   };
 
-  // The 'undefined' locale will use the browser's default locale
   const formattedDate = new Intl.DateTimeFormat(undefined, options).format(utcDate);
 
-  // The result from format() may have parts in a different order, so we re-format it
   const parts = new Intl.DateTimeFormat(undefined, options).formatToParts(utcDate);
   const year = parts.find(part => part.type === 'year').value;
   const month = parts.find(part => part.type === 'month').value;
@@ -1230,15 +950,12 @@ function getNaturalDate(date, onlyNatural = false) {
   const now = new Date();
   const dateObj = new Date(date);
   
-  // Reset hours to compare only dates
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const compareDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
   
-  // Calculate difference in days
   const timeDiff = compareDate - today;
   const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
   
-  // Weekday names in Spanish
   const weekdays = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
   const weekdayName = weekdays[dateObj.getDay()];
   
@@ -1255,21 +972,18 @@ function getNaturalDate(date, onlyNatural = false) {
     return 'Anteayer';
   }
   
-  // For dates in the same week
   if (daysDiff > 0 && daysDiff <= 6) {
     return `Este ${weekdayName}`;
   } else if (daysDiff < 0 && daysDiff >= -6) {
     return `El ${weekdayName} pasado`;
   }
   
-  // For next week
   if (daysDiff > 6 && daysDiff <= 13) {
     return `El próximo ${weekdayName}`;
   } else if (daysDiff < -6 && daysDiff >= -13) {
     return `El ${weekdayName} de la semana pasada`;
   }
   
-  // For distant dates - only return if not onlyNatural mode
   if (onlyNatural) {
     return null; // Don't return typical dates when onlyNatural is true
   }
@@ -1300,16 +1014,13 @@ function buildPagination(paginationData, page, container, actionFunction, additi
 
   const currentPage = page;
 
-  // Determine pages to display
   const pagesToShow = new Set();
   pagesToShow.add(0); // First page
   const rangeStart = Math.max(0, currentPage - 2);
   const rangeEnd = Math.min(pageCount - 1, currentPage + 2);
   for (let i = rangeStart; i <= rangeEnd; i++) pagesToShow.add(i);
   pagesToShow.add(pageCount - 1); // Last page
-  // Generate sorted array of pages
   const pagesArray = Array.from(pagesToShow).sort((a, b) => a - b);
-  // Build HTML with ellipsis where needed
   let paginationHTML = `<span class='user-select-none simple-container width-100 flex-wrap gap-4' style='overflow:auto;content-visibility: auto;'>`;
   let previousPage = null;
   for (const pageNumber of pagesArray) {
@@ -1325,7 +1036,6 @@ function buildPagination(paginationData, page, container, actionFunction, additi
   }
   paginationHTML += `</span>`;
 
-  // Set in DOM
   container.innerHTML = paginationHTML;
 
   const buttons = container.querySelectorAll("[data-page]");
@@ -1339,14 +1049,12 @@ function buildPagination(paginationData, page, container, actionFunction, additi
 
           button.disabled = false;
 
-          // document.querySelector("section[active]").scrollTo({top:0,behavior:'smooth'})
       })
   })
 }
 
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        // Optional: Show feedback that the link was copied
         message("Copiado al portapapeles", "success");
     }).catch(err => {
         console.error('Error al copiar el enlace: ', err);
@@ -1356,7 +1064,6 @@ function copyToClipboard(text) {
 function fillForm(form, data, skipFields = []){
   if(!form || !data) return;
 
-  // Fill inputs and standard form elements
   const inputs = form.querySelectorAll("input, select, textarea");
   inputs.forEach(input => {
     const name = input.name || input.id;
@@ -1369,7 +1076,6 @@ function fillForm(form, data, skipFields = []){
     }
   });
 
-  // Fill other elements like md-select
   const selects = form.querySelectorAll("md-select");
   selects.forEach(select => {
     const name = select.getAttribute("name") || select.id;
@@ -1378,10 +1084,8 @@ function fillForm(form, data, skipFields = []){
     }
   });
 
-  // Fill any element with a name attribute (like spans, divs, etc.)
   const namedElements = form.querySelectorAll("[name]");
   namedElements.forEach(element => {
-    // Skip inputs, selects and textareas which were already handled
     if(element.tagName === "INPUT" || element.tagName === "SELECT" || element.tagName === "TEXTAREA" || 
        element.tagName === "MD-SELECT") return;
     
@@ -1393,20 +1097,15 @@ function fillForm(form, data, skipFields = []){
 }
 
 function mdSelect(element, value) {
-  // Handle if element is a string selector
   const selectElement = typeof element === 'string' ? document.querySelector(element) : element;
   
-  // Ensure we have a valid element
   if (!selectElement) return;
   
-  // For standard select elements
   if (selectElement.tagName.toLowerCase() === 'select') {
     const optionIndex = Array.from(selectElement.options).findIndex(option => option.value == value);
     selectElement.selectedIndex = optionIndex >= 0 ? optionIndex : 0;
   } 
-  // For Material Design select elements
   else if (selectElement.tagName.toLowerCase().startsWith('md-')) {
-    // Material components might store options differently
     const options = Array.from(selectElement.querySelectorAll('md-select-option, option'));
     const optionIndex = options.findIndex(option => option.value == value);
     selectElement.selectedIndex = optionIndex >= 0 ? optionIndex : 0;
@@ -1415,161 +1114,3 @@ function mdSelect(element, value) {
   // Trigger a change event to ensure the UI updates
   selectElement.dispatchEvent(new Event('change', { bubbles: true }));
 }
-
-// function togglePopover(popoverReference, config = {}){
-//   // Configuración por defecto
-//   const defaultConfig = {
-//     action: "toggle", // toggle, open, close
-//     origin: null,     // Elemento origen para animación
-//     duration: 0.7,    // Duración de la animación
-//     scale: true,      // Si usar escala en la animación
-//     ease: "M0,0 C0.249,-0.124 0.04,0.951 0.335,1 0.684,1.057 0.614,0.964 1,1"
-//   };
-  
-//   config = { ...defaultConfig, ...config };
-
-//   // Obtener elemento popover
-//   const popover = popoverReference instanceof Element ? popoverReference : document.querySelector(popoverReference);
-//   if(!popover) {
-//     console.warn('Popover element not found:', popoverReference);
-//     return false;
-//   }
-
-//   // Determinar la acción basada en el estado actual si es toggle
-//   let finalAction = config.action;
-//   if(config.action === "toggle"){
-//     finalAction = popover.matches(':popover-open') ? "close" : "open";
-    
-//   }
-
-//   // Validar que no intentemos abrir algo ya abierto o cerrar algo ya cerrado
-//   const isOpen = popover.matches(':popover-open');
-//   if((finalAction === "open" && isOpen) || (finalAction === "close" && !isOpen)){
-//     return false; // No hacer nada si ya está en el estado deseado
-//   }
-
-//   // Manejar animación con origen
-//   if(config.origin){
-//     const originElement = config.origin instanceof Element ? config.origin : document.querySelector(config.origin);
-    
-//     if(!originElement){
-//       console.warn('Origin element not found:', config.origin);
-//       // Continuar sin animación de origen
-//     } else {
-//       // Preparar elementos para animación
-//       // originElement.setAttribute("data-flip-id", "animate");
-//       // popover.setAttribute("data-flip-id", "animate");
-      
-//       if(finalAction === "open"){
-//         const state = Flip.getState(originElement);
-        
-//         popover.showPopover();
-//         popover.setAttribute("active","");
-        
-//         Flip.from(state, {
-//           targets: popover,
-//           duration: config.duration,
-//           scale: config.scale,
-//           ease: CustomEase.create("popover-ease", config.ease),
-//           absolute: true,
-//           simple:true
-//         });
-//         return true;
-//       } else if(finalAction === "close"){
-//         // Para cerrar con animación, podríamos animar de vuelta al origen
-//         popover.hidePopover();
-//         return true;
-//       }
-//     }
-//   }
-
-//   // Manejar acción sin animación de origen
-//   if(finalAction === "open"){
-//     popover.showPopover();
-//   } else if(finalAction === "close"){
-//     popover.hidePopover();
-//     popover.removeAttribute("active");
-//   }
-
-//   return true;
-// }
-
-// function toggleDialog(dialogReference, config = {}) {
-//   // Configuración por defecto
-//   const defaultConfig = {
-//     action: "toggle", // toggle, open, close
-//     origin: null,     // Elemento origen para animación
-//     duration: 0.7,    // Duración de la animación
-//     scale: true,      // Si usar escala en la animación
-//     ease: "M0,0 C0.249,-0.124 0.04,0.951 0.335,1 0.684,1.057 0.614,0.964 1,1"
-//   };
-
-//   config = { ...defaultConfig, ...config };
-
-//   // Obtener elemento dialog
-//   const dialog = dialogReference instanceof Element ? dialogReference : document.querySelector(dialogReference);
-//   if (!dialog) {
-//     console.warn('Dialog element not found:', dialogReference);
-//     return false;
-//   }
-//   if (!dialog.showModal) {
-//     console.warn('The provided element is not a <dialog>:', dialogReference);
-//     return false;
-//   }
-
-//   // Determinar la acción basada en el estado actual si es toggle
-//   let finalAction = config.action;
-//   if (config.action === "toggle") {
-//     finalAction = dialog.open ? "close" : "open";
-//   }
-//   // Validar que no intentemos abrir algo ya abierto o cerrar algo ya cerrado
-//   const isOpen = dialog.open;
-//   if ((finalAction === "open" && isOpen) || (finalAction === "close" && !isOpen)) {
-//     return false; // No hacer nada si ya está en el estado deseado
-//   }
-
-//   // Manejar animación con origen
-//   if (config.origin) {
-//     const originElement = config.origin instanceof Element ? config.origin : document.querySelector(config.origin);
-//     if (!originElement) {
-//       console.warn('Origin element not found:', config.origin);
-//       // Continuar sin animación de origen
-//     } else {
-//       if (finalAction === "open") {
-//         const state = Flip.getState(originElement);
-//         dialog.showModal();
-//         Flip.from(state, {
-//           targets: dialog,
-//           duration: config.duration,
-//           scale: config.scale,
-//           ease: CustomEase.create("dialog-ease", config.ease),
-//           absolute: true,
-//           simple: true
-//         });
-//         return true;
-//       }else if (finalAction === "close") {
-//         const state = Flip.getState(originElement);
-//         const dialogState = Flip.getState(dialog);
-//         dialog.close();
-//         Flip.from(dialogState, {
-//           targets: dialog,
-//           duration: config.duration,
-//           scale: config.scale,
-//           ease: CustomEase.create("dialog-ease", config.ease),
-//           absolute: true,
-//           simple: true
-//         });
-//         return true;
-//       }
-//     }
-//   }
-//   // Manejar acción sin animación de origen
-//   if (finalAction === "open") {
-//     dialog.showModal();
-//     dialog.setAttribute("active", "");
-//   } else if (finalAction === "close") {
-//     dialog.close();
-//     dialog.removeAttribute("active");
-//   }
-//   return true;
-// }

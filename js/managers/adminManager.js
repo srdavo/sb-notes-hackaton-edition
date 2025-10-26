@@ -3,9 +3,6 @@ import adminService from './../services/adminService.js?v=3';
 const AdminManager = (() =>{
 
 
-    // window.adminService = adminService;
-    // openAdminPanel();
-
     const adminPanelWindow = document.getElementById("window-admin-panel");
 
     async function openAdminPanel(){
@@ -76,9 +73,6 @@ const AdminManager = (() =>{
 
             const profilePicture = user.profile_picture ? `<span class='simple-container overflow-hidden border-radius-64' style='width:24px;'><img class='width-100' src='${user.profile_picture}'></span>` : `<span class='simple-container outline-text overflow-hidden border-radius-64' style='width:24px;'><md-icon class='filled'>account_circle</md-icon></span>` 
             
-            
-            // permissions = (user.permissions == "7") ? "<span class='data-line primary-text'>Administrador</span>" : "<span class='data-line'>Usuario</span>";
-
             row.innerHTML = `
                 <td>${user.id}</td>
                 <td>${profilePicture}</td>
@@ -104,20 +98,15 @@ const AdminManager = (() =>{
             return;
         }
     
-        const currentPage = page; // 0-based
-    
-        // Determine pages to display
+        const currentPage = page; 
         const pagesToShow = new Set();
         pagesToShow.add(0); // First page
         const rangeStart = Math.max(0, currentPage - 2);
         const rangeEnd = Math.min(pageCount - 1, currentPage + 2);
         for (let i = rangeStart; i <= rangeEnd; i++) pagesToShow.add(i);
-        pagesToShow.add(pageCount - 1); // Last page
-    
-        // Generate sorted array of pages
+        pagesToShow.add(pageCount - 1); 
         const pagesArray = Array.from(pagesToShow).sort((a, b) => a - b);
     
-        // Build HTML with ellipsis where needed
         let paginationHTML = `<span class='user-select-none simple-container width-100 flex-wrap members-table-rows' style='min-height:48px;max-height:80px;overflow:auto;content-visibility: auto;'>`;
         let previousPage = null;
     
@@ -256,7 +245,6 @@ const AdminManager = (() =>{
     }
 
 
-    // Suggestions table
     const suggestionsTableContainer = document.getElementById("response-admin-panel-suggestions-table");
     const suggestionsTablePagination = suggestionsTableContainer.nextElementSibling;
     const totalSuggestionsContainer = document.getElementById("response-admin-panel-total-suggestions");
@@ -532,13 +520,11 @@ const AdminManager = (() =>{
 
     function calculateTimeSince(timestamp){
         const now = new Date();
-        // Convert both dates to UTC for consistent comparison
         const nowUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 
                       now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
         const accessTime = new Date(timestamp);
         const diffMs = nowUTC - accessTime;
         
-        // Convert to appropriate units
         const diffSec = Math.floor(diffMs / 1000);
         const diffMin = Math.floor(diffSec / 60);
         const diffHours = Math.floor(diffMin / 60);
@@ -553,8 +539,6 @@ const AdminManager = (() =>{
     }
 
     
-
-    // Therapists table
     const therapistsTableContainer = document.getElementById("response-admin-panel-therapists-table");
     const therapistsTablePagination = therapistsTableContainer.nextElementSibling;
     const totalTherapistsContainer = document.getElementById("response-admin-panel-total-therapists");

@@ -166,20 +166,14 @@ const AccountManager = (() => {
         const fullPage = page + queryString;
         
         
-        // if(apptLoadingIndicator) appLoadingIndicator.classList.remove("hidden");
         const checkSession = await accountService.checkSession();
-        // if(apptLoadingIndicator) appLoadingIndicator.classList.add("hidden");
         if(!checkSession) return false;
-        if(checkSession.session === true) return false; // at this point cookies do exists and session exists, so we dont need to do anything
+        if(checkSession.session === true) return false;
 
-        
-        // if session does not exists, and cookies exists, we need to check if the remember me token is valid and login
-        // if(apptLoadingIndicator) appLoadingIndicator.classList.remove("hidden");
         const result = await accountService.rememberMe(rememberMeToken);
         if(result === "invalid_token_180"){
             message("<div class='simple-container gap-8 padding-8 direction-column'>Token de acceso invalido, por favor vuelve a iniciar sesión <md-outlined-button onclick='logOut(true);'>Cerrar sesión</md-outlined-button></div>", "error");
         }
-        // if(apptLoadingIndicator) appLoadingIndicator.classList.add("hidden");
         if(!result.success) return false;
 
         console.log(result);
@@ -201,11 +195,11 @@ const AccountManager = (() => {
         if (parts.length === 2) {
             let cookieValue = parts.pop().split(';').shift();
             try {
-                cookieValue = decodeURIComponent(cookieValue); // **Crucially add decodeURIComponent here**
+                cookieValue = decodeURIComponent(cookieValue);
             } catch (e) {
                 // Handle potential decoding error (e.g., malformed encoded value)
                 console.error("Error decoding cookie value:", e);
-                return null; // Or handle error as needed
+                return null; 
             }
             return cookieValue;
         }
@@ -316,7 +310,6 @@ const AccountManager = (() => {
     }
 
 
-    // register access functionss
     async function registerAccess(){
         const data = {
             app: getCurrentApp(),
@@ -347,7 +340,6 @@ const AccountManager = (() => {
     }
 
 
-    // Forgot passwrord functions
     function openForgotPasswordWindow(){
         changeWindow("#window-forgot-password");
         flowStep(1, windowForgotPassword, false);

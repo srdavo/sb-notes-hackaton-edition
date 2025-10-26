@@ -78,8 +78,7 @@ const SubscriptionManager = (() => {
                 statusClass = "error-container on-error-container-text";
                 statusText = "Cancelada";
                 statusIcon = "cancel";
-                // button = `<md-filled-button class="small inter" href="./../../paymentcheckout" target="_blank">Renovar suscripción</md-filled-button>`
-                button = ``
+               button = ``
             }
             if(subscription.amount_total == "0.00"){
                 product = "Prueba gratuita de 30 días";
@@ -232,18 +231,14 @@ const SubscriptionManager = (() => {
     
         const currentPage = page; // 0-based
     
-        // Determine pages to display
         const pagesToShow = new Set();
         pagesToShow.add(0); // First page
         const rangeStart = Math.max(0, currentPage - 2);
         const rangeEnd = Math.min(pageCount - 1, currentPage + 2);
         for (let i = rangeStart; i <= rangeEnd; i++) pagesToShow.add(i);
-        pagesToShow.add(pageCount - 1); // Last page
-    
-        // Generate sorted array of pages
+        pagesToShow.add(pageCount - 1); 
         const pagesArray = Array.from(pagesToShow).sort((a, b) => a - b);
     
-        // Build HTML with ellipsis where needed
         let paginationHTML = `<span class='user-select-none simple-container width-100 flex-wrap members-table-rows' style='min-height:48px;max-height:80px;overflow:auto;content-visibility: auto;'>`;
         let previousPage = null;
     

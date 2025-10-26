@@ -29,7 +29,6 @@ const subscriptionService = (() => {
             return result;
         } catch (error) {
             clearTimeout(timeoutId);
-            // if(error.message === "email_taken"){ return error.message;}
 
             if (error.name === 'AbortError') {
                 message("Request timed out", "error");

@@ -31,24 +31,6 @@ const PaymentManager = (() => {
 
         const result = await paymentService.checkPaymentStatus(sessionId);
         console.log(result)
-
-        // if (result.status === 'complete') {
-        //     document.getElementById('payment-status').innerHTML = `
-        //         <p class="success">¡Pago exitoso! Tu cuenta ha sido actualizada a Pro.</p>
-        //         <md-filled-button href='apps/mind/home'>Continuar a la app</md-filled-button>    
-        //     `;
-                 
-        //     // Actualizar la interfaz para reflejar funcionalidades Pro
-        //     // ...
-            
-        //     // Redirigir al dashboard después de unos segundos
-        //     // setTimeout(() => {
-        //     //     window.location.href = '/codemelon/dashboard';
-        //     // }, 5000);
-        // } else {
-        //     document.getElementById('payment-status').innerHTML = 
-        //         '<p class="error">Hubo un problema con el pago. Por favor, intenta nuevamente.</p>';
-        // }
         return result;
     }
     return{

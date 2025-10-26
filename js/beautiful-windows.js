@@ -54,7 +54,6 @@ function toggleBeautifulWindow(windowSelector = false, cloneChanges = false){
         
         if(cloneChanges){
             const eventOriginCloneChildren = Array.from(preparedArea.querySelectorAll("*")).slice(1);
-            // const eventOriginCloneText = eventOriginClone.querySelector("[data-origin_text]");
             
             setTimeout(() => {
                 const eventOriginCloneChildrenState = Flip.getState(eventOriginCloneChildren);
@@ -83,7 +82,6 @@ function toggleBeautifulWindow(windowSelector = false, cloneChanges = false){
 }
 async function togglePrettyWindow(windowSelector = false, sharedElements = false, absolute = false, invert = false, customOrigin = false){
     const instanceRandomNumber = generateRandomNumberForVT();
-    // console.log(invert);
 
     if(!windowSelector){
 
@@ -96,7 +94,6 @@ async function togglePrettyWindow(windowSelector = false, sharedElements = false
             return;
         }
 
-        // we asume there is window open
         const desiredElement = document.querySelector("[data-shared_elements]");
         if(!desiredElement){
             toggleWindow();
@@ -264,16 +261,12 @@ async function togglePrettyWindow(windowSelector = false, sharedElements = false
 
             if (rect.top < (screenHeight/2)) {
             desiredWindow.style.bottom = "unset";
-            // desiredWindow.style.top = (Math.round(rect.top) + Math.round(rect.height) + 8)+"px";
-            // if(appearStyle){
                 desiredWindow.style.top = (Math.round(rect.top))+"px";
             // }
             transparent.classList.add("top");
 
             }else{
             desiredWindow.style.top = "unset";
-            // desiredWindow.style.bottom = (screenHeight-Math.round(rect.bottom) + Math.round(rect.height) + 8)+"px";
-            // if(appearStyle){
                 desiredWindow.style.bottom = (screenHeight-Math.round(rect.bottom))+"px";
             // }
             transparent.classList.add("bottom");

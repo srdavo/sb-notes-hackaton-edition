@@ -3,7 +3,6 @@
     let adminPanel = document.querySelector("#window-admin-panel");
     let emailUsers = [];
     document.addEventListener('DOMContentLoaded', () => {
-        // Se le asigna las funciones de las funciones Email a los botones
         const btnSendEmail = document.getElementById('sendEmail')
         btnSendEmail.onclick = () => {
             if(!checkEmpty("#admin-panel-form-send-user-email", "input")){return;}
@@ -24,21 +23,17 @@
                 const EmailContent = getEmailContent();
                 sendEmailAllUsers(EmailContent.header, EmailContent.content);
             }else {
-                // console.log('Completa los campos')
             }
         }
 
 
         document.getElementById('email-options').addEventListener('change', (e) => {
-            // Selección de los elementos que se mostrarán
             const option1 = document.getElementById('emailOption1');
             const option2 = document.getElementById('emailOption2');
             const emailLabel = document.getElementById('Email-label');
-            // Ocultar todos los divs
             option1.classList.add('hidden');
             option2.classList.add('hidden');
     
-            // Mostrar el div correspondiente a la selección
             if (e.target.value == "1") {
                 option1.classList.remove('hidden');
                 emailLabel.textContent = "Enviar a usarios"

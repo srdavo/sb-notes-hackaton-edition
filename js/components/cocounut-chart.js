@@ -217,7 +217,6 @@ class cocounutChart extends HTMLElement {
 
     for(let i=0 ; i<barsCount; i++){
 
-      // here we create the bar container and the bar
       const barContainer = document.createElement('div');
       barContainer.classList.add('bar-container');
       const barHeight = (dataYvalues[i] / maxYvalue) * 100;
@@ -226,7 +225,6 @@ class cocounutChart extends HTMLElement {
       bar.style.maxHeight = `${barHeight}%`;
       barContainer.appendChild(bar);
 
-      // here we work the X tooltip and label
       const barTooltip = document.createElement('span');
       barTooltip.classList.add('bar-tooltip');
       const barTooltipXLabel = document.createElement('span');
@@ -241,7 +239,6 @@ class cocounutChart extends HTMLElement {
       }
       barTooltip.appendChild(barTooltipXLabel);
 
-      // here we work the Y tooltip and label
       const barTooltipValue = document.createElement('span');
       barTooltipValue.classList.add('body-medium');
       switch (dataYvaluesType) {
@@ -257,7 +254,6 @@ class cocounutChart extends HTMLElement {
       barTooltip.appendChild(barTooltipValue);
       bar.appendChild(barTooltip);
 
-      // append the bar container to the chart container
       chartContainer.appendChild(barContainer);
     }
 
