@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <h1 class="main-title margin-0 text-center-on-mobile text-center text-wrap-pretty">stmainotesepbro AI</h1>
+        <h1 class="main-title margin-0 text-center-on-mobile text-center text-wrap-pretty">MaiNotes - enchaced with AI</h1>
       </div>
     </div>
 
@@ -79,7 +79,7 @@
         }
       ?>
     </div>
-  </div> -->
+  </div>
 
 
 
